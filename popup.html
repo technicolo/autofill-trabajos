@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Job Autofill Helper</title>
+    <style>
+      body { font-family: system-ui, sans-serif; width: 320px; padding: 12px; }
+      textarea, input, select, button { width: 100%; margin: 6px 0; }
+      .row { display: flex; gap: 8px; }
+      .row > * { flex: 1; }
+      .small { font-size: 12px; color: #555; }
+      .pill { display:inline-block; padding:4px 8px; background:#eee; border-radius:999px; margin:2px 4px 0 0; }
+    </style>
+  </head>
+  <body>
+    <h3>Job Autofill Helper</h3>
+
+    <label>Perfil (JSON)</label>
+    <textarea id="profile" rows="8" placeholder='{"fullName":"Juan Pérez","email":"juan@example.com","phone":"+54 9 ...","linkedin":"https://...","github":"https://...","city":"Rosario","resume":"texto..."}'></textarea>
+    <div class="row">
+      <button id="save">Guardar perfil</button>
+      <button id="load">Cargar</button>
+    </div>
+
+    <label>Campos extra (clave=valor, uno por línea)</label>
+    <textarea id="extras" rows="4" placeholder="portfolio=https://miportfolio.com&#10;expectedSalary=ARS 1.200.000"></textarea>
+
+    <label>Estrategia de mapeo</label>
+    <select id="strategy">
+      <option value="smart">Smart (labels/placeholders/aria)</option>
+      <option value="name">Sólo por name/id</option>
+    </select>
+
+    <div class="row">
+      <button id="autofill">Rellenar en esta pestaña</button>
+      <button id="clear">Limpiar campos</button>
+    </div>
+
+    <p class="small">
+      Consejos: mantené el envío manual. Respetá los Términos de cada sitio y evitá spam.
+    </p>
+
+    <div id="hints" class="small"></div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
