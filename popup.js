@@ -115,6 +115,11 @@
       expectedSalary: ["salario", "pretensión", "pretension", "expected salary", "compensation"],
       position: ["position", "puesto", "role", "cargo"],
       resume: ["resume", "cv", "cover letter", "about you", "sobre ti", "sobre mí", "sobre mi"],
+      /*campos a tener en cuenta : 
+      sexo:(masculino o femenino)
+      documento: (quizas es muy personal)
+      pais de residencia:
+      */
     };
 
     let filledCount = 0;
