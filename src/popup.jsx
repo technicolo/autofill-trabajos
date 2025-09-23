@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   ChakraProvider, extendTheme,
@@ -33,6 +33,11 @@ function injectAutofill(payload) {
     expectedSalary: ["salario", "pretensión", "pretension", "expected salary", "compensation"],
     position: ["position", "puesto", "role", "cargo"],
     resume: ["resume", "cv", "cover letter", "about you", "sobre ti", "sobre mí", "sobre mi"]
+    /*campos a tener en cuenta : 
+      sexo:(masculino o femenino)
+      documento: (quizas es muy personal)
+      pais de residencia:
+      */
   };
 
   const data  = Object.assign({}, payload.profile || {}, payload.extras || {});
