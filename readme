@@ -1,1 +1,20 @@
+Descripción corregida
+
+Ok, esto es fácil de usar. Quizás no sea perfecto, pero estoy trabajando en algunos detalles.
+Ahora, si lo querés usar:
+
+Ejecutá npm install.
+
+Entrá al apartado de extensiones (por ejemplo, en Opera).
+
+Activá las opciones de desarrollador y hacé clic en Cargar descomprimida.
+
+Es muy importante: cuando te pida seleccionar una carpeta, elegí la que dice dist.
+
+Si no te aparece la carpeta dist, ejecutá el comando npm run build.
+
+Esto la va a generar automáticamente, y luego podés retomar el paso anterior.
+
+Por último, cargá tu formulario personalizado… ¡y a llenar solicitudes de trabajo a lo loco! (o al menos las que te parezcan interesantes 😄)
+
 Los datos se guardan únicamente en el navegador del usuario. No se transmiten a servidores externos.
