@@ -13,6 +13,6 @@ Si no te aparece la carpeta dist, ejecutá el comando npm run build.
 
 Esto la va a generar automáticamente, y luego podés retomar el paso anterior.
 
-Por último, cargá tu formulario personalizado… ¡y a llenar solicitudes de trabajo a lo loco! (o al menos las que te parezcan interesantes 😄)
+Por último, cargá tu formulario personalizado… ¡y a llenar solicitudes de trabajo a lo loco! (o al menos las que te parezcan interesantes)
 
 Los datos se guardan únicamente en el navegador del usuario. No se transmiten a servidores externos.
