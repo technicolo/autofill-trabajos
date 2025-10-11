@@ -1,15 +1,18 @@
-import { defineConfig } from "vite";
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import { resolve } from 'path'
 
 export default defineConfig({
+  base: '', // importante para extensiones (rutas relativas)
+  plugins: [react()],
   build: {
-    outDir: "dist",
+    outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
-      input: "src/popup.jsx",
-      output: {
-        entryFileNames: "popup.js",
-        assetFileNames: "[name][extname]"
-      }
-    }
-  }
-});
+      // tu popup.html está en la raíz del proyecto
+      input: {
+        popup: resolve(__dirname, 'popup.html'),
+      },
+    },
+  },
+})

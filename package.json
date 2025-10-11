@@ -3,19 +3,22 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && echo Build listo",
+    "build": "vite build",
+    "postbuild": "powershell -NoProfile -Command \"New-Item -ItemType Directory -Force dist | Out-Null; Copy-Item manifest.json dist\\manifest.json; if (Test-Path content.js) { Copy-Item content.js dist\\content.js }; if (Test-Path icons) { Copy-Item -Recurse icons dist\\icons }\"",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.8.1",
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
-    "framer-motion": "^11.0.0",
+    "@chakra-ui/icons": "^2.2.4",
+    "@chakra-ui/react": "^2.10.9",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "framer-motion": "^11.18.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "vite": "^5.4.0"
+    "@vitejs/plugin-react": "^5.0.4",
+    "esbuild": "^0.25.10",
+    "vite": "^5.4.20"
   }
 }
