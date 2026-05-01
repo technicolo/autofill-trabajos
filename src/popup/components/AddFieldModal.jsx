@@ -5,23 +5,26 @@ import {
 import { useEffect, useState } from "react";
 
 const COMMON_FIELDS = [
-  { key: "fullName", label: "Nombre completo" },
-  { key: "firstName", label: "Nombre" },
-  { key: "lastName", label: "Apellido" },
-  { key: "email", label: "Email" },
-  { key: "phone", label: "Teléfono" },
-  { key: "city", label: "Ciudad" },
-  { key: "province", label: "Provincia/Estado" },
-  { key: "country", label: "País" },
-  { key: "linkedin", label: "LinkedIn" },
-  { key: "github", label: "GitHub" },
-  { key: "portfolio", label: "Portfolio / Website" },
-  { key: "position", label: "Puesto / Rol" },
+  { key: "fullName",       label: "Nombre completo" },
+  { key: "firstName",      label: "Nombre" },
+  { key: "lastName",       label: "Apellido" },
+  { key: "email",          label: "Email" },
+  { key: "phone",          label: "Teléfono" },
+  { key: "city",           label: "Ciudad" },
+  { key: "province",       label: "Provincia/Estado" },
+  { key: "country",        label: "País" },
+  { key: "linkedin",       label: "LinkedIn" },
+  { key: "github",         label: "GitHub" },
+  { key: "portfolio",      label: "Portfolio / Website" },
+  { key: "position",       label: "Puesto / Rol" },
   { key: "expectedSalary", label: "Pretensión salarial" },
-  { key: "resume", label: "Resumen / Sobre mí" },
+  { key: "resume",         label: "Resumen / Sobre mí" },
+  { key: "startDate",      label: "Disponibilidad / Inicio", hint: "ej: hoy · inmediato · 2 semanas · 2025-06-01" },
+  { key: "graduationDate", label: "Fecha de graduación",     hint: "ej: 2022-12 · diciembre 2022 · 2022" },
+  { key: "dateOfBirth",    label: "Fecha de nacimiento",     hint: "ej: 1990-05-20 · 20/05/1990" },
 ];
 
-export default function AddFieldModal({ isOpen, onClose, onAdd, existingKeys = [] }) {
+export default function AddFieldModal({ isOpen, onClose, onAdd, existingKeys = [], defaultKey = "" }) {
   const [mode, setMode] = useState("common"); // common | custom
   const [search, setSearch] = useState("");
   const [selectedKey, setSelectedKey] = useState("");
@@ -29,10 +32,14 @@ export default function AddFieldModal({ isOpen, onClose, onAdd, existingKeys = [
   const [value, setValue] = useState("");
 
   useEffect(() => {
-    if (!isOpen) {
+    if (isOpen && defaultKey) {
+      setMode("custom");
+      setCustomKey(defaultKey);
+      setValue("");
+    } else if (!isOpen) {
       setMode("common"); setSearch(""); setSelectedKey(""); setCustomKey(""); setValue("");
     }
-  }, [isOpen]);
+  }, [isOpen, defaultKey]);
 
   const pool = COMMON_FIELDS.filter(
     (f) =>
@@ -72,6 +79,7 @@ export default function AddFieldModal({ isOpen, onClose, onAdd, existingKeys = [
                 ))}
                 {pool.length === 0 && <Text fontSize="sm">Sin resultados</Text>}
               </SimpleGrid>
+              {(() => { const hint = COMMON_FIELDS.find(f => f.key === selectedKey)?.hint; return hint ? <Text fontSize="xs" color="blue.500">{hint}</Text> : null; })()}
               <Input placeholder="Valor" value={value} onChange={(e) => setValue(e.target.value)} />
             </VStack>
           ) : (
